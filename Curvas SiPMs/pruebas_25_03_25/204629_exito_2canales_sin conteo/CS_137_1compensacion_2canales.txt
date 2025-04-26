@@ -1,0 +1,2 @@
+Al inicio la moneda estaba mas hacia el channel 2, entonces a los pocos segundos
+del inicio se movio en el centro de los dos canales, la compensacion se hizo solo al inicio

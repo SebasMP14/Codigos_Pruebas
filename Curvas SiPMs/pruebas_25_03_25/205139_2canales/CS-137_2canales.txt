@@ -1,0 +1,5 @@
+se probaron ambos canales, con la compensacion activada, el tiempo en el que el 
+canal uno esta activo es mayor que el canal 2, de ahi la diferencia de cuentas.
+En un determinado punto se elevo drasticamente la temperatura, se puede observar
+la disminucion de las cuentas, en este punto se ejecuto el algoritmo de polarizacion, 
+lo que llevo a un aumento de las cuentas nuevamente, resultado, funciona, que tanto?
