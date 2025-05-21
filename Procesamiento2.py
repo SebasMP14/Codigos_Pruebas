@@ -26,7 +26,7 @@ def procesar_datos(archivo, inicio, fin):
         match_temp = re.search(r'([\d:]+\.\d+) > .*Temperatura: ([\d\.]+)', linea)
         match_combined = re.search(r'([\d:]+\.\d+) > millis: .*? Temperatura: ([\d\.]+)', linea)
         match_inicio = re.search("Interrupci", linea)
-        match_fin = re.search("Vbias:", linea)
+        match_fin = re.search("(polarization_settling) -> Vbias:", linea)
         
         
         # Verificar si la línea contiene los mensajes de interrupción
@@ -52,7 +52,7 @@ def procesar_datos(archivo, inicio, fin):
                 t_fin = match_fin.group(1)
                 t_fin = (datetime.strptime(t_fin, "%H:%M:%S.%f") - base_time1).total_seconds()
                 interrupciones[-1][-1] = t_fin  # Guardamos el intervalo
-                interrupcion_iniciada = False  # Termina la interrupción
+                interrupcion_iniciada = False   # Termina la interrupción
         
         if match_count:
             timestamp, count = match_count.groups()
@@ -651,15 +651,15 @@ if __name__ == "__main__":
     # compensacion = "con"
     # OV = 1.5
 
-    delta_t = 10
-    archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250325-182158.log"
-    archivo = "device-monitor-250325-182158.log"
-    inicio_linea = 87
-    fin_linea = 3105
-    moneda = "Co-60"
-    fecha = "25/03/25"
-    compensacion = "sin"
-    OV = 1.5      ########### PLOTS GUARDADOS
+    # delta_t = 10
+    # archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250325-182158.log"
+    # archivo = "device-monitor-250325-182158.log"
+    # inicio_linea = 87
+    # fin_linea = 3105
+    # moneda = "Co-60"
+    # fecha = "25/03/25"
+    # compensacion = "sin"
+    # OV = 1.5      ########### PLOTS GUARDADOS
 
     # delta_t = 10
     # archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250325-184825.log"
@@ -712,15 +712,25 @@ if __name__ == "__main__":
     # compensacion = "con"
     # OV = 1.5 ########### PLOTS GUARDADOS COUNT1 y COUNT2
 
-    # delta_t = 10
-    # archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250325-211210.log"
-    # archivo = "device-monitor-250325-211210.log"
-    # inicio_linea = 1711
-    # fin_linea = 3361
+    delta_t = 10
+    archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250325-211210.log"
+    archivo = "device-monitor-250325-211210.log"
+    inicio_linea = 1711
+    fin_linea = 3361
+    moneda = "CS-137"
+    fecha = "25/03/25"
+    compensacion = "con"
+    OV = 1.5        ########### PLOTS GUARDADOS COUNT1 y COUNT2
+
+    # delta_t = 120
+    # archivo_txt = r"C:\Users\Pc\Documents\Platform_Projects\MUA_Control_Placa_Pruebas\logs\device-monitor-250515-195616.log"
+    # archivo = "device-monitor-250515-195616.log"
+    # inicio_linea = 875
+    # fin_linea = 51805
     # moneda = "CS-137"
-    # fecha = "25/03/25"
+    # fecha = "15/05/25"
     # compensacion = "con"
-    # OV = 1.5        ########### PLOTS GUARDADOS COUNT1 y COUNT2
+    # OV = 5.5
 
 
     info = f"Prueba de flujo de partículas: Fecha {fecha}, Fuente {moneda}, {compensacion} compensación, " + \
